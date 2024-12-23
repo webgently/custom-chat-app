@@ -77,7 +77,7 @@ function ChatList() {
           </div>
 
           {/* CTA to create new group chat or private chat */}
-          <CTAModal />
+          {/* <CTAModal />
           <CTAIconWrapper
             className="absolute bottom-[2rem] right-[2rem] cursor-pointer"
             onClick={() => {
@@ -136,7 +136,7 @@ function ChatList() {
                 </motion.svg>
               )}
             </AnimatePresence>
-          </CTAIconWrapper>
+          </CTAIconWrapper> */}
         </>
       )}
     </ActivePage>

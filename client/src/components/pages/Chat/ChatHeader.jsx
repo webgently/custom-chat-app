@@ -86,7 +86,7 @@ function ChatHeader({ chatProfile, className }) {
           </div>
         </div>
       </div>
-      <IconWrapper
+      {/* <IconWrapper
         onClick={() => {
           dispatch(
             modalActions.openModal({
@@ -110,8 +110,8 @@ function ChatHeader({ chatProfile, className }) {
             className="!stroke-transparent"
           />
         </svg>
-      </IconWrapper>
-      <ActionsModal chatProfile={chatProfile} />
+      </IconWrapper> */}
+      {/* <ActionsModal chatProfile={chatProfile} /> */}
     </Header>
   );
 }

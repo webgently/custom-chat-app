@@ -43,7 +43,7 @@ function UserProfile() {
           </svg>
         </IconWrapper>
         <h2 className="text-[2rem] font-semibold ml-[2rem] mr-auto">Profile</h2>
-        {profile.name && (
+        {/* {profile.name && (
           <IconWrapper
             onClick={() =>
               dispatch(
@@ -72,7 +72,7 @@ function UserProfile() {
               />
             </svg>
           </IconWrapper>
-        )}
+        )} */}
       </Header>
 
       {/* Avatar */}

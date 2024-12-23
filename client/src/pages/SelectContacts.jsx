@@ -86,7 +86,7 @@ function SelectContacts() {
         />
       ))}
       {/* If no contacts exists */}
-      {!contacts.length && (
+      {/* {!contacts.length && (
         <div className="flex flex-col py-[2rem] items-center uppercase">
           <button
             onClick={() =>
@@ -103,10 +103,10 @@ function SelectContacts() {
             Add Contacts Now
           </button>
         </div>
-      )}
+      )} */}
 
       {/* ADD button */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {selectedContacts.length && (
           <motion.div
             initial={{ bottom: "-10rem" }}
@@ -132,7 +132,7 @@ function SelectContacts() {
             </CTAIconWrapper>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </ActivePage>
   );
 }

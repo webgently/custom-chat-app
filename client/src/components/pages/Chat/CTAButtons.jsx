@@ -134,7 +134,7 @@ function CTAButtons({
         </AnimatePresence>
 
         {/* Microphone */}
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {!isTyping && !isRecording && !isSending && (
             <motion.svg
               initial={{ scale: 0 }}
@@ -158,7 +158,7 @@ function CTAButtons({
               />
             </motion.svg>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
 
         {/* Send icon */}
         <AnimatePresence>

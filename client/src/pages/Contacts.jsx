@@ -49,7 +49,7 @@ function Contacts() {
           contacts.map((contact) => (
             <ContactItem key={contact._id} contact={contact} />
           ))}
-        {!contacts.length && (
+        {/* {!contacts.length && (
           <div className="flex flex-col py-[2rem] items-center uppercase">
             <button
               onClick={() =>
@@ -66,9 +66,9 @@ function Contacts() {
               Add Contacts Now
             </button>
           </div>
-        )}
+        )} */}
       </div>
-      <CTAIconWrapper
+      {/* <CTAIconWrapper
         onClick={() =>
           dispatch(
             modalActions.openModal({
@@ -95,7 +95,7 @@ function Contacts() {
             className=" stroke-white"
           />
         </svg>
-      </CTAIconWrapper>
+      </CTAIconWrapper> */}
     </ActivePage>
   );
 }
