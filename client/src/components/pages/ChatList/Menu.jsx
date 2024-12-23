@@ -97,7 +97,7 @@ function Menu() {
         </ModalChild>
         <ModalChild
           onClick={(event) => {
-            event.target.querySelector("div").click();
+            event.target.querySelector("div")?.click();
           }}
         >
           <svg
