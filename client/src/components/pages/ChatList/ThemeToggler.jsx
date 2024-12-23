@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 
 function ThemeToggler() {
-  const [darkMode, setDarkMode] = useState(null);
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     if (darkMode === null) {
