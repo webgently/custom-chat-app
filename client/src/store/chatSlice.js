@@ -113,7 +113,7 @@ const chatSlice = createSlice({
       { payload: { chatRoomId, messageId, day, status } }
     ) => {
       const messageHistory = current(
-        state.chatHistory[chatRoomId].messageHistory
+        state.chatHistory[chatRoomId]?.messageHistory || []
       );
       const dayMessagesIndex = messageHistory.findIndex(
         (dayMessage) => dayMessage.day === day

@@ -14,11 +14,14 @@ const contactsSlice = createSlice({
       );
     },
     setContactOnlineStatus: (state, { payload }) => {
-      const contactIndex = state.findIndex(
-        (contact) => contact.contactDetails._id === payload.id
-      );
-
-      state[contactIndex].contactDetails.status = payload.status;
+      if (state.length > 0) {
+        const contactIndex = state.findIndex(
+          (contact) => contact.contactDetails._id === payload.id
+        );
+        if (contactIndex >= 0) {
+          state[contactIndex].contactDetails.status = payload.status;
+        }
+      }
     },
   },
 });
