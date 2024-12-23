@@ -18,8 +18,11 @@ function Login({ setUserWantsToLogin }) {
   const { reqState, reqFn: loginRequest } = useFetch(
     { url: "/user/login", method: "POST" },
     // Success
-    () => {
-      dispatch(authActions.login());
+    (res) => {
+      if (res.status === "success") {
+        localStorage.setItem("token", JSON.stringify(res.data.token));
+        dispatch(authActions.login());
+      }
     }
   );
 
