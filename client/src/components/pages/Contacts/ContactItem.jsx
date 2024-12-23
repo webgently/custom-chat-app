@@ -14,11 +14,17 @@ function ContactItem({
       className="flex py-[1rem] px-[1.5rem] gap-[1rem]"
     >
       {/* Avatar */}
-      <Image
-        src={contactDetails.avatar}
-        alt={contactName}
-        className="w-[5rem] h-[5rem] rounded-full"
-      />
+      <div className="relative">
+        <Image
+          src={contactDetails.avatar}
+          alt={contactName}
+          className="w-[5rem] h-[5rem] rounded-full"
+        />
+        {contactDetails.status.online && (
+          <span className="absolute right-1 bottom-1 rounded-full border-[6px] border-[#23a55a]" />
+        )}
+      </div>
+
       {/* Details */}
       <div className="">
         <p className="font-semibold cursor-default">{contactName}</p>
