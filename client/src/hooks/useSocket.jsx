@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
 
-const socket = io();
+const socket = io(
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:4000"
+);
 
 const useSocket = () => {
   const userId = useSelector((state) => state.userReducer.user._id);
