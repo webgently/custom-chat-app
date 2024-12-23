@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { modalActions } from "../../../store/modalSlice";
+import useSendMessage from "../../../hooks/useSendMessage";
 
 function MessageInput({
   isRecording,
@@ -8,15 +9,42 @@ function MessageInput({
   messageEmpty,
   getCaretIndex,
   emitTypingEvent,
+  setMessageEmpty,
 }) {
   const dispatch = useDispatch();
+  const { sendMessage } = useSendMessage(setMessageEmpty);
 
-  // Ask for confirmation to terminate recording if user is currenly recording a message
   const terminateRecording = (event) => {
     getCaretIndex(event);
     if (isRecording) {
       event.currentTarget.blur();
       dispatch(modalActions.openModal({ type: "stopRecordModal" }));
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (messageEmpty) return;
+
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault(); // Prevent the default action (new line)
+      sendMessage();
+    } else if (event.key === "Enter" && event.shiftKey) {
+      event.preventDefault();
+      // Insert a new line
+      const selection = window.getSelection();
+      const range = selection.getRangeAt(0);
+
+      // Create a new line element
+      const br = document.createElement("br");
+      range.insertNode(br);
+      range.setStartAfter(br);
+      range.setEndAfter(br);
+
+      // Move the caret to the new line
+      selection.removeAllRanges();
+      selection.addRange(range);
+    } else {
+      emitTypingEvent(event); // Call existing typing event handler
     }
   };
 
@@ -48,7 +76,7 @@ function MessageInput({
         onInput={handleInput}
         onClick={terminateRecording}
         onFocus={getCaretIndex}
-        onKeyDown={emitTypingEvent}
+        onKeyDown={handleKeyDown} // Updated handler
       ></div>
     </div>
   );

@@ -98,26 +98,29 @@ function NewMessage({ currentChatRoom }) {
               messageEmpty={messageEmpty}
               getCaretIndex={getCaretIndex}
               emitTypingEvent={emitTypingEvent}
+              setMessageEmpty={setMessageEmpty}
             />
 
-            <AttachFileOrRecordDuration
+            {/* <AttachFileOrRecordDuration
               isRecording={isRecording}
               formattedTime={formattedTime}
-            />
+            /> */}
           </div>
           <BubbleTail fillColor="fill-primary stroke-primary" />
         </div>
 
         {/* Action buttons to record stop recording and send messages or voice notes */}
-        <CTAButtons
-          startRecording={startRecording}
-          endRecording={endRecording}
-          isTyping={isTyping}
-          isRecording={isRecording}
-          clearRecording={clearRecording}
-          pauseRecording={pauseRecording}
-          setMessageEmpty={setMessageEmpty}
-        />
+        {!messageEmpty && (
+          <CTAButtons
+            startRecording={startRecording}
+            endRecording={endRecording}
+            isTyping={isTyping}
+            isRecording={isRecording}
+            clearRecording={clearRecording}
+            pauseRecording={pauseRecording}
+            setMessageEmpty={setMessageEmpty}
+          />
+        )}
       </div>
 
       {/* Modals */}
@@ -129,12 +132,12 @@ function NewMessage({ currentChatRoom }) {
       />
 
       {/* To attach either video or photo */}
-      <AttachFileModal />
+      {/* <AttachFileModal /> */}
       {/* Ask confirmation to stop recording if user types into keyboard while recording */}
-      <StopRecordModal
+      {/* <StopRecordModal
         playRecording={playRecording}
         clearRecording={clearRecording}
-      />
+      /> */}
     </div>
   );
 }
