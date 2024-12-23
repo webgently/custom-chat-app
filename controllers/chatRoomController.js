@@ -18,7 +18,7 @@ exports.getChatRoom = catchAsyncError(async (req, res, next) => {
 
 exports.getChatRoomSummaryForUser = catchAsyncError(async (req, res, next) => {
   // Get user
-  const user = await User.findById(req.cookies.userId);
+  const user = await User.findById(req.user.id);
 
   let chatRoomSummary = await Promise.all(
     user.chatRooms.map(async (chatRoomId) => {
@@ -116,7 +116,7 @@ exports.getChatRoomSummaryForUser = catchAsyncError(async (req, res, next) => {
 });
 
 exports.pinChatRoom = catchAsyncError(async (req, res, next) => {
-  const user = await User.findById(req.cookies.userId);
+  const user = await User.findById(req.user.id);
   user.pinnedChatRooms.push(req.params.chatRoomId);
   await user.save();
 
@@ -129,7 +129,7 @@ exports.pinChatRoom = catchAsyncError(async (req, res, next) => {
 });
 
 exports.unpinChatRoom = catchAsyncError(async (req, res, next) => {
-  const user = await User.findById(req.cookies.userId);
+  const user = await User.findById(req.user.id);
   user.pinnedChatRooms = user.pinnedChatRooms.filter(
     (chatRoomId) => chatRoomId.toString() !== req.params.chatRoomId
   );

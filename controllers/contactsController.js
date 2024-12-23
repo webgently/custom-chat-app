@@ -9,7 +9,7 @@ const {
 
 exports.getAllContacts = catchAsyncError(async (req, res, next) => {
   // Id is gotten from cookies, so as to get user contacts
-  const user = await User.findById(req.cookies.userId).populate({
+  const user = await User.findById(req.user.id).populate({
     path: "contacts.contactDetails",
     select: "id username bio avatar status",
   });
@@ -31,7 +31,7 @@ exports.addNewContact = catchAsyncError(async (req, res, next) => {
   if (!username) return next(new ReqError(400, "Contact username is needed"));
 
   // Get models for both users
-  const user = await User.findById(req.cookies.userId);
+  const user = await User.findById(req.user.id);
   const newContact = await User.findOne({ username: username });
 
   // Validate models existence
@@ -112,7 +112,7 @@ exports.deleteContact = catchAsyncError(async (req, res, next) => {
   if (!username) return next(new ReqError(400, "Contact username is missing"));
 
   // Get models
-  const user = await User.findById(req.cookies.userId);
+  const user = await User.findById(req.user.id);
   const aimedContact = await User.findOne({ username: username });
 
   // Validate models

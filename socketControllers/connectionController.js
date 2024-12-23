@@ -40,7 +40,10 @@ exports.onlineController = (io, socket) => {
 
     // Save user model
     await userModel.save({ validateBeforeSave: false });
-
+    console.log("-----user:online------");
+    console.log("userId:", userId);
+    console.log("allRoomsUserIn:", allRoomsUserIn);
+    console.log("----------------------");
     // Emit user online status in all rooms user is in
     socket.to(allRoomsUserIn).emit("user:online", userId);
   });
@@ -61,6 +64,11 @@ exports.offlineController = (io, socket) => {
 
     await userModel.save({ validateBeforeSave: false });
 
+    console.log("-----user:offline-----");
+    console.log("userId:", userId);
+    console.log("allRoomsUserIn:", allRoomsUserIn);
+    console.log("----------------------");
+
     socket
       .to(allRoomsUserIn)
       .emit("user:offline", { userId: userModel._id, time });
@@ -69,7 +77,7 @@ exports.offlineController = (io, socket) => {
 
 // socket disconnection
 exports.disconnectingController = (io, socket) => {
-  socket.on("disconnecting", async () => {
+  socket.on("disconnect", async () => {
     if (!socket.userId) return;
     // Get user detaiils
     const { userModel, allRoomsUserIn } = await this.getSocketDetails(
@@ -85,6 +93,10 @@ exports.disconnectingController = (io, socket) => {
 
     await userModel.save({ validateBeforeSave: false });
 
+    console.log("------disconnect------");
+    console.log("userId:", socket.userId);
+    console.log("allRoomsUserIn:", allRoomsUserIn);
+    console.log("----------------------");
     socket
       .to(allRoomsUserIn)
       .emit("user:offline", { userId: userModel._id, time });
