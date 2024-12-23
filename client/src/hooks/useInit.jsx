@@ -93,6 +93,11 @@ const useInit = () => {
         dispatch(chatActions.updateChatProfile({ payload }));
       });
     }
+    return () => {
+      socket.off("connect");
+      socket.off("user:online");
+      socket.off("user:offline");
+    };
   }, [userId]);
 
   useEffect(() => {
