@@ -58,10 +58,6 @@ const useInit = () => {
   // On getting user details
   useEffect(() => {
     if (userId) {
-      // Connect socket if disconnected
-      if (socket.disconnected) {
-        socket.connect();
-      }
       // Announce logged in status
       socketEmit("user:online", userId);
 
