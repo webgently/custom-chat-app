@@ -61,10 +61,10 @@ app.use("/api/upload", uploadRouter);
 app.use(errorController);
 
 // Static file serving (Uncomment for serving client build)
-// app.use(express.static(path.join(__dirname, "client", "build")));
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-// });
+app.use(express.static(path.join(__dirname, "client", "build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 // Create HTTP server and initialize Socket.IO
 const server = http.createServer(app);
