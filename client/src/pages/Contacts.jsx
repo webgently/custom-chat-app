@@ -68,7 +68,7 @@ function Contacts() {
           </div>
         )} */}
       </div>
-      {/* <CTAIconWrapper
+      <CTAIconWrapper
         onClick={() =>
           dispatch(
             modalActions.openModal({
@@ -95,7 +95,7 @@ function Contacts() {
             className=" stroke-white"
           />
         </svg>
-      </CTAIconWrapper> */}
+      </CTAIconWrapper>
     </ActivePage>
   );
 }
