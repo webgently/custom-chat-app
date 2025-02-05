@@ -99,7 +99,7 @@ function ChatOptionsModal() {
         {chatData.pinned ? unpin : pin}
         {chatData.pinned ? "Unpin" : "Pin"}
       </ModalChild>
-      {/* <ModalChild
+      <ModalChild
         onClick={() => {
           dispatch(modalActions.closeModal());
 
@@ -133,7 +133,7 @@ function ChatOptionsModal() {
           />
         </svg>
         {chatData.roomType ? "Delete Chat" : "Leave Group"}
-      </ModalChild> */}
+      </ModalChild>
     </Modal>
   );
 }

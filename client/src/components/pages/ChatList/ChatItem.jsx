@@ -168,6 +168,7 @@ function ChatItem({ chatData }) {
                   !!chatData.latestMessage.sender && (
                     <span>{chatData.latestMessage.sender}: </span>
                   )}
+
                 {chatData.latestMessage.messageType === "text" && (
                   <span
                     dangerouslySetInnerHTML={{

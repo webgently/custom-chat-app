@@ -63,6 +63,7 @@ function SelectContacts() {
           contacts={selectedContacts}
           removeContact={removeContact}
         />
+        
         {/* Search Input */}
         {!!contacts.length && (
           <input
@@ -85,6 +86,7 @@ function SelectContacts() {
           removeContact={removeContact}
         />
       ))}
+
       {/* If no contacts exists */}
       {/* {!contacts.length && (
         <div className="flex flex-col py-[2rem] items-center uppercase">
@@ -106,7 +108,7 @@ function SelectContacts() {
       )} */}
 
       {/* ADD button */}
-      {/* <AnimatePresence>
+      <AnimatePresence>
         {selectedContacts.length && (
           <motion.div
             initial={{ bottom: "-10rem" }}
@@ -132,7 +134,7 @@ function SelectContacts() {
             </CTAIconWrapper>
           </motion.div>
         )}
-      </AnimatePresence> */}
+      </AnimatePresence>
     </ActivePage>
   );
 }
